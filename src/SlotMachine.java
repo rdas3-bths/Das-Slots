@@ -27,6 +27,11 @@ public class SlotMachine {
         currentSymbols[2] = allSymbols[(int)(Math.random()*7)];
     }
 
+    public boolean lastSeven() {
+        if (currentSymbols[2].equals(SEVEN)) return true;
+        return false;
+    }
+
     public String displayResult() {
         String space1 = " ";
         String space2 = " ";
