@@ -20,7 +20,6 @@ public class PlayerData {
             while (s.hasNextLine()) {
                 String data = s.nextLine();
                 String[] playerInfo = data.split("\\|");
-                System.out.println(playerInfo[0] + " " + playerInfo[1]);
                 Player p = new Player(playerInfo[0], Integer.parseInt(playerInfo[1]));
                 players.add(p);
             }
