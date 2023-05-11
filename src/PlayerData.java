@@ -15,7 +15,7 @@ public class PlayerData {
     public void loadPlayers() {
         try {
             players = new ArrayList<Player>();
-            File f = new File("/Users/dasru/IdeaProjects/SlotMachine/src/players.data");
+            File f = new File("src/players.data");
             Scanner s = new Scanner(f);
             while (s.hasNextLine()) {
                 String data = s.nextLine();
@@ -49,9 +49,9 @@ public class PlayerData {
 
     public void saveData() {
         try {
-            File f = new File("/Users/dasru/IdeaProjects/SlotMachine/src/players.data");
+            File f = new File("src/players.data");
             f.createNewFile();
-            FileWriter fw = new FileWriter("/Users/dasru/IdeaProjects/SlotMachine/src/players.data");
+            FileWriter fw = new FileWriter("src/players.data");
             String data = "";
             for (int i = 0; i < players.size(); i++) {
                 data = players.get(i).getUserName() + "|" + players.get(i).getWinnings();

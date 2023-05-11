@@ -2,13 +2,14 @@ import java.util.Arrays;
 
 public class SlotMachine {
 
-    public static final String SEVEN = "7️⃣";
-    public static final String MONEY = "\uD83D\uDCB0";
-    public static final String CHERRY = "\uD83C\uDF52";
-    public static final String EIGHT_BALL = "\uD83C\uDFB1";
-    public static final String HEARTS = "\uD83D\uDC95";
-    public static final String X = "❌";
-    public static final String DICE = "\uD83C\uDFB2";
+    public static final String PATH = "images/";
+    public static final String SEVEN = PATH + "seven.PNG";
+    public static final String MONEY = PATH + "money.PNG";
+    public static final String CHERRY = PATH + "cherry.PNG";
+    public static final String BAR = PATH + "bar.PNG";
+    public static final String HEARTS = PATH + "heart.PNG";
+    public static final String HORSE_SHOE = PATH + "horse.PNG";
+    public static final String BELL = PATH + "bell.PNG";
 
     private String[] currentSymbols;
     private String[] allSymbols;
@@ -17,7 +18,7 @@ public class SlotMachine {
 
     public SlotMachine() {
         currentSymbols = new String[3];
-        allSymbols = new String[] {SEVEN, MONEY, CHERRY, EIGHT_BALL, HEARTS, X, DICE};
+        allSymbols = new String[] {SEVEN, MONEY, CHERRY, BAR, HEARTS, HORSE_SHOE, BELL};
         jackpot = 0;
     }
 
@@ -30,6 +31,10 @@ public class SlotMachine {
     public boolean lastSeven() {
         if (currentSymbols[2].equals(SEVEN)) return true;
         return false;
+    }
+
+    public String getCurrentSymbol(int n) {
+        return currentSymbols[n];
     }
 
     public String displayResult() {
@@ -50,10 +55,10 @@ public class SlotMachine {
             if (currentSymbols[i].equals(SEVEN)) check[0]++;
             if (currentSymbols[i].equals(MONEY)) check[1]++;
             if (currentSymbols[i].equals(CHERRY)) check[2]++;
-            if (currentSymbols[i].equals(EIGHT_BALL)) check[3]++;
+            if (currentSymbols[i].equals(BAR)) check[3]++;
             if (currentSymbols[i].equals(HEARTS)) check[4]++;
-            if (currentSymbols[i].equals(X)) check[5]++;
-            if (currentSymbols[i].equals(DICE)) check[6]++;
+            if (currentSymbols[i].equals(HORSE_SHOE)) check[5]++;
+            if (currentSymbols[i].equals(BELL)) check[6]++;
         }
 
         // rules:
@@ -77,35 +82,35 @@ public class SlotMachine {
             jackpot = jackpot + 200;
             return "SEVENS --> 200 DAS COINS!";
         }
-        // Three "X" --> jackpot goes to 0
+        // Three "Horse shoes" --> jackpot goes to 0
         if (check[5] == 3) {
             jackpot = 0;
             return "YOU ARE A LOSER!";
         }
-        // Two "X" --> jackpot cut in half
+        // Two "Horse shoes" --> jackpot cut in half
         if (check[5] == 2) {
             jackpot = jackpot / 2;
             return "BAD LUCK! Jackpot cut in half";
         }
-        // Three dice --> +100
+        // Three bells --> +100
         if (check[6] == 3) {
             jackpot = jackpot + 100;
-            return "Lucky dice! 100 DAS COINS!";
+            return "Lucky bells! 100 DAS COINS!";
         }
-        // Two dice --> +50
+        // Two bells --> +50
         if (check[6] == 2) {
             jackpot = jackpot + 50;
-            return "OK OK ... Nice Dice! 50 DAS COINS!";
+            return "OK OK ... Nice bells! 50 DAS COINS!";
         }
         // One dice --> +25
         if (check[6] == 1) {
             jackpot = jackpot + 25;
-            return "ONE DICE! GRATS! 25 DAS COINS!";
+            return "ONE BELL! GRATS! 25 DAS COINS!";
         }
         // Three eight ball --> jackpot cut in half
         if (check[3] == 3) {
             jackpot = jackpot / 2;
-            return "BAD EIGHT BALLS! Jackpot cut in half";
+            return "UNLUCKY! Jackpot cut in half";
         }
         // Three hearts --> +100
         if (check[4] == 3) {
